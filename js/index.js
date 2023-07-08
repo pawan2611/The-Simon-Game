@@ -44,6 +44,13 @@ $(document).keypress(() => {
     }
 })
 
+$('#level-title').click(() => {
+    if (started == false) {
+        nextSequence();
+        started = true;
+    }
+})
+
 function checkAnswer(currentLevel) {
     if (userClickedPattern[currentLevel] === gamePattern[currentLevel]) {
         if (userClickedPattern.length === gamePattern.length) {
@@ -59,7 +66,7 @@ function checkAnswer(currentLevel) {
     } else {
         playSound('wrong');
         $('body').addClass('game-over')
-        $('#level-title').text('Game Over, Press Any Key to Restart');
+        $('#level-title').text('Game Over, Click Any Key to Restart');
         setTimeout(() => {
             $('body').removeClass('game-over')
         }, 200);
